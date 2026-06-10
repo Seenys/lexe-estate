@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Property } from "../data/properties";
+import { Property } from "../lib/supabase";
 
 interface PropertyCardProps {
   property: Property;
@@ -11,8 +11,8 @@ export default function PropertyCard({ property, hiddenClasses = "" }: PropertyC
     <article className={`bg-white rounded-xl overflow-hidden shadow-card hover:shadow-soft transition-all duration-300 group cursor-pointer h-full flex flex-col ${hiddenClasses}`}>
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image
-          src={property.imageUrl}
-          alt={property.imageAlt}
+          src={property.image_url}
+          alt={property.image_alt}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-110"
         />
@@ -27,7 +27,7 @@ export default function PropertyCard({ property, hiddenClasses = "" }: PropertyC
         <div className="flex justify-between items-baseline mb-2">
           <h3 className="font-bold text-lg text-nordic-dark">
             ${property.price.toLocaleString()}
-            {property.priceLabel && <span className="text-sm font-normal text-nordic-muted">{property.priceLabel}</span>}
+            {property.price_label && <span className="text-sm font-normal text-nordic-muted">{property.price_label}</span>}
           </h3>
         </div>
         <h4 className="text-nordic-dark font-medium truncate mb-1">{property.title}</h4>
@@ -47,3 +47,4 @@ export default function PropertyCard({ property, hiddenClasses = "" }: PropertyC
     </article>
   );
 }
+

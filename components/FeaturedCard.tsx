@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Property } from "../data/properties";
+import { Property } from "../lib/supabase";
 
 interface FeaturedCardProps {
   property: Property;
@@ -10,8 +10,8 @@ export default function FeaturedCard({ property }: FeaturedCardProps) {
     <div className="group relative rounded-xl overflow-hidden shadow-soft bg-white cursor-pointer">
       <div className="aspect-[4/3] w-full overflow-hidden relative">
         <Image
-          src={property.imageUrl}
-          alt={property.imageAlt}
+          src={property.image_url}
+          alt={property.image_alt}
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
