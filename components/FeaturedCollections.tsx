@@ -1,8 +1,12 @@
 import FeaturedCard from "./FeaturedCard";
-import { featuredProperties } from "../data/properties";
+import { Property } from "../lib/supabase";
 import Link from "next/link";
 
-export default function FeaturedCollections() {
+interface FeaturedCollectionsProps {
+  properties: Property[];
+}
+
+export default function FeaturedCollections({ properties }: FeaturedCollectionsProps) {
   return (
     <section className="mb-16">
       <div className="flex items-end justify-between mb-8">
@@ -15,10 +19,11 @@ export default function FeaturedCollections() {
         </Link>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {featuredProperties.map((property) => (
+        {properties.map((property) => (
           <FeaturedCard key={property.id} property={property} />
         ))}
       </div>
     </section>
   );
 }
+
